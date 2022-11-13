@@ -48,6 +48,7 @@ class Table {
     updateRow(updateRow) {
         this.rows = this.rows.map((row) => (row.id === updateRow.id ? updateRow : row));
         this.filteredRows = this.filteredRows.map((row) => (row.id === updateRow.id ? updateRow : row));
+        this.selectedRows = this.selectedRows.map((row) => (row.id === updateRow.id ? updateRow : row));
         this.isLoading = false;
         this.render();
     }
