@@ -1,0 +1,10 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    height: 600px;
+    margin: 0 auto;
+}

@@ -1,0 +1,122 @@
+@use "../abstract/mixins" as m;
+@use "../abstract/variables" as v;
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+
+    &.in {
+        animation: fadeIn 0.3s ease;
+
+        .content {
+            animation: slideIn 0.3s ease;
+        }
+    }
+
+    &.out {
+        animation: fadeOut 0.3s ease;
+
+        .content {
+            animation: slideOut 0.3s ease;
+        }
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-width: 420px;
+        width: 100%;
+        margin: auto;
+        border-radius: 8px;
+        box-shadow: v.$shadow-md;
+
+        .header {
+            position: relative;
+            padding: 2rem;
+            background: v.$white;
+
+            &::after {
+                position: absolute;
+                content: "";
+                top: 100%;
+                left: 50%;
+                height: 0;
+                width: 0;
+                margin-left: -20px;
+                border: 20px solid transparent;
+                border-top-color: v.$white;
+            }
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.4rem;
+            padding: 3rem 2rem;
+            background: v.$slate-100;
+
+            .title {
+                text-align: center;
+                font-size: 1.8rem;
+                font-weight: 400;
+                color: v.$blue-gray-900;
+            }
+
+            .message {
+                text-align: center;
+                color: v.$blue-gray-900;
+            }
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-10px);
+        }
+
+        to {
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes slideOut {
+        from {
+            transform: translateY(0px);
+        }
+
+        to {
+            transform: translateY(-10px);
+        }
+    }
+}
