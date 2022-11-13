@@ -40,8 +40,6 @@ const rows = [
     { id: 21, lastname: "Targaryen", name: "Viserys", age: 22 },
 ];
 
-let lastId = 21;
-
 const container = document.querySelector(".container");
 
 const table = new Datagrid({
