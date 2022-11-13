@@ -108,7 +108,7 @@ class Table {
     }
 
     setPages() {
-        this.pages = Math.ceil(this.rows.length / this.rowsPerPage) || 1;
+        this.pages = Math.ceil(this.filteredRows.length / this.rowsPerPage) || 1;
     }
 
     create() {
@@ -386,7 +386,6 @@ class Table {
         });
         form.appendChild(checkbox.get());
 
-
         const checkTooltip = new Tooltip({
             target: checkbox.get(),
             message: this.selectedRows.length > 0 ? "Deseleccionar todo" : "Seleccionar todo",
@@ -611,15 +610,15 @@ class Table {
         const rows = document.createElement("div");
         rows.classList.add("rows");
         let text = "";
-        if (this.rows.length) {
+        if (this.filteredRows.length) {
             text += (this.page - 1) * this.rowsPerPage + 1 + "-";
         } else {
             text += "0-";
         }
-        if (this.page * this.rowsPerPage > this.rows.length) {
-            text += this.rows.length + " de " + this.rows.length;
+        if (this.page * this.rowsPerPage > this.filteredRows.length) {
+            text += this.filteredRows.length + " de " + this.filteredRows.length;
         } else {
-            text += this.page * this.rowsPerPage + " de " + this.rows.length;
+            text += this.page * this.rowsPerPage + " de " + this.filteredRows.length;
         }
         rows.textContent = text;
         colRight.appendChild(rows);
