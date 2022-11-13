@@ -676,7 +676,6 @@ class Table {
     }
 
     handleSortColumn(column) {
-        console.log(column);
         if (this.sortColumn === column) {
             this.sort = !this.sort;
         } else {
@@ -684,7 +683,7 @@ class Table {
             this.sortColumn = column;
         }
 
-        this.rows.sort((a, b) => {
+        this.filteredRows.sort((a, b) => {
             const aValue = a[column.field];
             const bValue = b[column.field];
 
